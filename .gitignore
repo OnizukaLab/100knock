@@ -1,0 +1,9 @@
+.idea
+__pycache__/
+data/
+!data/.gitkeep
+
+2018/tanaka/result/
+
+
+

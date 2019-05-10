@@ -10,13 +10,13 @@ $ cd 100knock/
 $ git config user.name <user name>
 $ git config user.email <user address>
 $ git config --list
-$ git branch <name>
-$ git checkout <name>
+$ git branch <name>-<chapter number>
+$ git checkout <name>-<chapter number>
 $ git branch
 $ cd <yyyy>/<name>
 ```
 `$ git config --list` では git の config 一覧が表示されます． `user.email` が正しいアドレスになっていることを確認してください．
-`$ git branch` では branch の一覧が表示されます．`<name>-2018` が選択されていたら ok です．
+`$ git branch` では branch の一覧が表示されます．`<name>-<chapter number>` が選択されていたら ok です．
 
 ## ディレクトリ構成
 > 100knock/
@@ -38,7 +38,7 @@ $ cd <yyyy>/<name>
 チェックボックスになっているので，好きに使ってください．
 2. リモートリポジトリの `Issues` から該当の issue を開いて，`Assignees` を自分にします．
 最初は `Assignees` がメンターになっています．ここのcheckを外して，自分にcheckを入れてください．
-3. ローカルリポジトリで， `<name>-<chapter number>-<question number>` branch を作成し checkout してください．
+3. ローカルリポジトリで， `<name>-<chapter number>` branch を作成し checkout してください．
 4. 問題をといてください．何かあれば，リモートリポジトリの issue ページで @<mentor name> をつけてコメントしてください．
 5. 問題が解けたら，そのファイルをステージングしてください．`$ git add <file>` 
  で行えます．ただし，データは add しないでください．git は大きなデータを管理するようには設計されておらず，めちゃくちゃ動作が重くなります． 
@@ -47,9 +47,9 @@ $ cd <yyyy>/<name>
 7. `$ git commit -m <comment>` でコミットしてください．add したファイルの変更（新規作成を含む）が反映されます．
  `<comment>` には，変更内容を一言でわかりやすく書いてください．一言で書ききれないほど変更がある場合は，複数回に分けてコミットしてください．
 8. `$ git log` で過去のコミットが新しい順で表示されます．最新のコミットがさっきのになっていたら ok です．
-9. `$ git push origin <name>-<chapter number>-<question number>` でコミットがリモートリポジトリに反映されます．
+9. `$ git push origin <name>-<chapter number>` でコミットがリモートリポジトリに反映されます．
 10. リモートリポジトリの `Pull requests` を開いて `New pull request` を押してください．プルリク作成画面が表示されますので，
-`base:<yyyy>`， `compare:<name>-<chapter number>-<question number>` を選択し変更が正しいことを確認して
+`base:<yyyy>`， `compare:<name>-<chapter number>` を選択し変更が正しいことを確認して
  `Create pull request` を押してください．
 11. プルリクのタイトル，説明文を書いて，`Assignees` を自分に，`Reviewer` をメンターに設定してください．
 説明文には@<mentor name>をつけて，issue 番号を明記すると良いでしょう．
@@ -64,10 +64,10 @@ $ git pull origin <yyyy>
 ```
 ディレクトリ構成などをみて，正しく反映されていることを確かめてください．
 
-15. 不要になった `<name>-<chapter number>-<question number>` ブランチを削除します．
+15. 不要になった `<name>-<chapter number>` ブランチを削除します．
 ```
-$ git branch --delete <name>-<chapter number>-<question number>
-$ git push origin :<name>-<chapter number>-<question number>
+$ git branch --delete <name>-<chapter number>
+$ git push origin :<name>-<chapter number>
 ```
 前者はローカルリポジトリのブランチ削除，後者はリモートリポジトリのブランチ削除です．
 
