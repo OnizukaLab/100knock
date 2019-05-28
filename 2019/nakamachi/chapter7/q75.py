@@ -1,9 +1,7 @@
-import sys
-from os import path
-
-import numpy as np
-
-sys.path.append(path.abspath(path.curdir))
+# need to set chapter7 as resource root.
+# import sys
+# from os import path
+# sys.path.append(path.abspath(path.curdir))
 from q72 import load_data, load_vectorizer
 from q73 import load_model
 

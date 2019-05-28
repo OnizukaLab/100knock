@@ -24,7 +24,7 @@ def data_loader():
 
 
 def generate_sentiment_txt():
-    data = generate_sentiment_txt()
+    data = generate_sentiment_from_pos_neg_data()
     with codecs.open(SENTIMENT_TXT_DATA_PATH, "w", "utf-8") as f:
         f.writelines(data)
 

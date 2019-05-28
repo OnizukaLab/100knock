@@ -1,9 +1,7 @@
-import sys
-from os import path
-import csv
-
-sys.path.append(path.abspath(path.curdir))
-from q72 import load_data
+# need to set chapter7 as resource root.
+# import sys
+# from os import path
+# sys.path.append(path.abspath(path.curdir))
 from q76 import generate_csv_style_data
 
 data = generate_csv_style_data()

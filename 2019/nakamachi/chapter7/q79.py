@@ -1,11 +1,10 @@
-import sys
-from os import path
-
+# need to set chapter7 as resource root.
+# import sys
+# from os import path
+# sys.path.append(path.abspath(path.curdir))
 import pickle
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-sys.path.append(path.abspath(path.curdir))
 from q72 import load_data
 
 MODEL_PATH = "/Users/reiven/Documents/Python/100knock/data/chapter7/model_cv.pkl"
@@ -21,6 +20,7 @@ with open(MODEL_PATH, "wb") as f:
 def load_model():
     with open(MODEL_PATH, "rb") as f:
         return pickle.load(f)
+
 
 y_score = lr.predict(X)
 from sklearn.metrics import precision_recall_curve

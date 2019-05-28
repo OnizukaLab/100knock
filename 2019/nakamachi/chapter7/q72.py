@@ -1,5 +1,7 @@
-import sys
-from os import path
+# need to set chapter7 as resource root.
+# import sys
+# from os import path
+# sys.path.append(path.abspath(path.curdir))
 from collections import defaultdict
 import pickle
 
@@ -8,7 +10,6 @@ from nltk.stem import snowball
 from nltk.tokenize import RegexpTokenizer
 from sklearn.feature_extraction.text import CountVectorizer
 
-sys.path.append(path.abspath(path.curdir))
 from q71 import is_stopwords
 from data_loader import data_loader
 
@@ -21,7 +22,7 @@ def generate_vectors():
     y = list()
     X_data = list()
     word_dict = defaultdict(lambda: 0)
-    stemmer = snowball.EnglishStemmer()
+    stemer = snowball.EnglishStemmer()
     tokenizer = RegexpTokenizer(r'\w+')
     sentence_list = list()
     for sentence in data_loader():
@@ -31,7 +32,7 @@ def generate_vectors():
         sentence = " ".join(sentence[1:])
 
         sentence = tokenizer.tokenize(sentence)
-        sentence = [stemmer.stem(word) for word in sentence if not is_stopwords(word)]
+        sentence = [stemer.stem(word) for word in sentence if not is_stopwords(word)]
         for word in sentence:
             word_dict[word] += 1
         sentence_list.append(" ".join(sentence))
@@ -44,8 +45,8 @@ def generate_vectors():
     medium_frequency_words = [key for key in word_dict.keys() if 2 < word_dict[key] < 20]
     vectorizer = CountVectorizer()
     vectorizer.fit(medium_frequency_words)
-    with open(VECTORIZER_DATAPATH, "wb") as f:
-        pickle.dump(vectorizer, f)
+
+    save_vectorizer(vectorizer)
 
     X_data = vectorizer.transform(sentence_list)
     X_data.toarray()
@@ -61,12 +62,17 @@ def save_data():
         pickle.dump(X, f)
 
 
-def load_data() -> (np.array, np.array):
+def load_data() -> (np.ndarray, np.ndarray):
     with open(Y_DATAPATH, "rb") as f:
         y = pickle.load(f)
     with open(X_DATAPATH, "rb") as f:
         X_data = pickle.load(f)
     return y, X_data
+
+
+def save_vectorizer(vectorizer):
+    with open(VECTORIZER_DATAPATH, "wb") as f:
+        pickle.dump(vectorizer, f)
 
 
 def load_vectorizer():

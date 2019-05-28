@@ -1,7 +1,7 @@
-import sys
-from os import path
-
-sys.path.append(path.abspath(path.curdir))
+# need to set chapter7 as resource root.
+# import sys
+# from os import path
+# sys.path.append(path.abspath(path.curdir))
 from data_loader import data_loader
 
 data = data_loader()
